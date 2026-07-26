@@ -1,7 +1,7 @@
-/* === The Kindness Mob — Global Styles === */
+/* === The Kindness Mob â€” Global Styles === */
 :root {
-  --yellow:   #F5C518;
-  --gold:     #E6AC00;
+  --red:      #C8281A;
+  --red-dark: #A81F0F;
   --black:    #111111;
   --white:    #FFFFFF;
   --gray:     #F7F7F7;
@@ -27,6 +27,13 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 ul { list-style: none; }
+
+/* === LOGO IMAGE === */
+.logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
 
 /* === NAV === */
 .site-header {
@@ -58,7 +65,7 @@ ul { list-style: none; }
   white-space: nowrap;
 }
 
-.logo-link:hover .logo-text { color: var(--yellow); }
+.logo-link:hover .logo-text { color: var(--red); }
 
 .nav-links {
   display: flex;
@@ -77,14 +84,14 @@ ul { list-style: none; }
 .nav-links a:hover { color: var(--white); }
 
 .nav-donate {
-  background: var(--yellow);
-  color: var(--black) !important;
+  background: var(--red);
+  color: var(--white) !important;
   padding: 8px 18px;
   border-radius: 100px;
   font-weight: 600 !important;
   transition: background 0.2s, transform 0.15s;
 }
-.nav-donate:hover { background: var(--gold); transform: translateY(-1px); }
+.nav-donate:hover { background: var(--red-dark); transform: translateY(-1px); }
 
 .nav-toggle {
   display: none;
@@ -121,7 +128,7 @@ ul { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(245,197,24,0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, rgba(200,40,26,0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -137,7 +144,7 @@ ul { list-style: none; }
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--yellow);
+  color: var(--red);
   margin-bottom: 24px;
 }
 
@@ -179,10 +186,10 @@ ul { list-style: none; }
 }
 
 .btn-primary {
-  background: var(--yellow);
-  color: var(--black);
+  background: var(--red);
+  color: var(--white);
 }
-.btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,197,24,0.3); }
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,40,26,0.35); }
 
 .btn-outline {
   background: transparent;
@@ -193,7 +200,7 @@ ul { list-style: none; }
 
 /* === STATS STRIP === */
 .stats-strip {
-  background: var(--yellow);
+  background: var(--red);
   padding: 40px 24px;
 }
 
@@ -210,7 +217,7 @@ ul { list-style: none; }
 .stat-num {
   font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: 800;
-  color: var(--black);
+  color: var(--white);
   line-height: 1;
   letter-spacing: -0.03em;
 }
@@ -219,7 +226,7 @@ ul { list-style: none; }
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.6);
+  color: rgba(255,255,255,0.7);
   margin-top: 6px;
 }
 
@@ -252,11 +259,11 @@ ul { list-style: none; }
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--yellow);
+  color: var(--red);
   margin-bottom: 16px;
 }
 
-.section-dark .section-eyebrow { color: var(--yellow); }
+.section-dark .section-eyebrow { color: #ff6b5b; }
 
 h2 {
   font-size: clamp(2rem, 4.5vw, 3rem);
@@ -289,8 +296,8 @@ h2 {
 
 .step-num {
   width: 52px; height: 52px;
-  background: var(--yellow);
-  color: var(--black);
+  background: var(--red);
+  color: var(--white);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -379,8 +386,8 @@ h2 {
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--yellow);
-  box-shadow: 0 0 0 3px rgba(245,197,24,0.15);
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(200,40,26,0.15);
 }
 
 .form-group textarea { resize: vertical; min-height: 120px; }
@@ -445,7 +452,7 @@ h2 {
   display: flex;
   align-items: center;
 }
-.footer-social a:hover { color: var(--yellow); }
+.footer-social a:hover { color: var(--red); }
 
 .footer-copy {
   font-size: 0.8rem;
@@ -517,3 +524,4 @@ h2 {
   .stats-inner { gap: 40px; }
   .form-card { padding: 32px 24px; }
 }
+
