@@ -1,4 +1,4 @@
-/* === The Kindness Mob â€” Global Styles === */
+/* === The Kindness Mob — Global Styles === */
 :root {
   --red:      #C8281A;
   --red-dark: #A81F0F;
@@ -65,7 +65,7 @@ ul { list-style: none; }
   white-space: nowrap;
 }
 
-.logo-link:hover .logo-text { color: var(--red); }
+.logo-link:hover .logo-img { opacity: 0.85; }
 
 .nav-links {
   display: flex;
@@ -523,5 +523,7 @@ h2 {
   .form-row { grid-template-columns: 1fr; }
   .stats-inner { gap: 40px; }
   .form-card { padding: 32px 24px; }
-}
 
+  .nominate-grid { grid-template-columns: 1fr !important; }
+  .contact-grid { grid-template-columns: 1fr !important; }
+}
