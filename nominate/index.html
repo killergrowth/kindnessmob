@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nominate a Creator | The Kindness Mob</title>
+  <meta name="description" content="Know a creator who deserves some love? Nominate them and The Kindness Mob will flood their comments with kindness.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://kindnessmob.pages.dev/nominate/">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/images/styles.css">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Nominate a Creator | The Kindness Mob">
+  <meta property="og:description" content="Nominate a creator for a daily mob of kindness on TikTok, Instagram, YouTube, or Facebook.">
+  <meta property="og:image" content="https://kindnessmob.pages.dev/images/og-image.jpg">
+  <meta property="og:url" content="https://kindnessmob.pages.dev/nominate/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Kindness Mob">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nominate a Creator | The Kindness Mob">
+  <meta name="twitter:description" content="Nominate someone who deserves a wave of kind comments.">
+  <meta name="twitter:image" content="https://kindnessmob.pages.dev/images/og-image.jpg">
+  <!-- SCHEMA:BreadcrumbList -->
+  <!-- SCHEMA:WebPage -->
+</head>
+<body>
+
+<!-- HEADER -->
+
+<main>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="/">Home</a>
+      <span>&#8250;</span>
+      <span>Nominate</span>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <h1>Nominate a Creator</h1>
+    <p>Know someone who could use a wave of encouragement? Tell us about them.</p>
+  </section>
+
+  <section class="section section-gray">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1.6fr;gap:64px;align-items:start;">
+        <div>
+          <p class="section-eyebrow">How Nominations Work</p>
+          <h2 style="font-size:1.8rem;margin-bottom:20px;">A Few Things to Know</h2>
+          <div style="display:flex;flex-direction:column;gap:24px;">
+            <div>
+              <h3 style="font-size:1rem;margin-bottom:6px;">&#x2705; We pick one per day</h3>
+              <p style="font-size:0.9rem;color:rgba(0,0,0,0.6);line-height:1.65;">We receive more nominations than we can mob in a day. So scroll through the recent nominations list &#8212; you can always show kindness right now without waiting for us!</p>
+            </div>
+            <div>
+              <h3 style="font-size:1rem;margin-bottom:6px;">&#x1F910; Never mention the Kindness Mob</h3>
+              <p style="font-size:0.9rem;color:rgba(0,0,0,0.6);line-height:1.65;">We ask all mobbers NOT to mention us in comments. The kindness should feel organic &#8212; because it is.</p>
+            </div>
+            <div>
+              <h3 style="font-size:1rem;margin-bottom:6px;">&#x1F4F1; All major platforms</h3>
+              <p style="font-size:0.9rem;color:rgba(0,0,0,0.6);line-height:1.65;">TikTok, Instagram, Facebook, and YouTube. Include the profile link or username so we can find the right person.</p>
+            </div>
+            <div>
+              <h3 style="font-size:1rem;margin-bottom:6px;">&#x1F4AC; Join the Discord</h3>
+              <p style="font-size:0.9rem;color:rgba(0,0,0,0.6);line-height:1.65;">Our Discord is where daily mobs get announced. <a href="https://discord.gg/aNF6X82Gfr" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">Join here</a> to participate in real time.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h2 style="font-size:1.5rem;margin-bottom:8px;">Submit a Nomination</h2>
+          <p style="font-size:0.9rem;color:rgba(0,0,0,0.55);margin-bottom:28px;">Fill out the form below. The more detail you give, the better we can pick the right creator.</p>
+
+          <form id="nominate-form" action="https://thekindnessmob.org/#nomination-section" method="get" target="_blank">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="your-name">Your Name</label>
+                <input type="text" id="your-name" name="your_name" placeholder="Jane Smith" autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="your-email">Your Email (optional)</label>
+                <input type="email" id="your-email" name="your_email" placeholder="jane@example.com" autocomplete="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="platform">Platform</label>
+              <select id="platform" name="platform">
+                <option value="">Select a platform</option>
+                <option value="tiktok">TikTok</option>
+                <option value="instagram">Instagram</option>
+                <option value="facebook">Facebook</option>
+                <option value="youtube">YouTube</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="nominee">Creator Username or Profile Link</label>
+              <input type="text" id="nominee" name="nominee" placeholder="@username or profile URL">
+            </div>
+            <div class="form-group">
+              <label for="reason">Why should we mob them? <span style="font-weight:400;color:rgba(0,0,0,0.45)">(be specific!)</span></label>
+              <textarea id="reason" name="reason" placeholder="Tell us who this person is and why they deserve some kindness..."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="post-link">Link to a specific post (optional)</label>
+              <input type="url" id="post-link" name="post_link" placeholder="https://...">
+            </div>
+            <p style="font-size:0.78rem;color:rgba(0,0,0,0.4);margin-bottom:20px;">
+              Note: This form is a placeholder. For now, submit nominations directly on <a href="https://thekindnessmob.org/#nomination-section" target="_blank" rel="noopener" style="color:var(--gold);">thekindnessmob.org</a>.
+            </p>
+            <a href="https://thekindnessmob.org/#nomination-section" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Submit Nomination &#8594;</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+  }
+</script>
+</body>
+</html>

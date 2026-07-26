@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | The Kindness Mob</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/images/styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+
+<main>
+  <section class="hero" style="min-height:80vh;">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">404</span>
+      <h1>Lost in the Kindness?</h1>
+      <p class="hero-sub">This page doesn&#8217;t exist, but hey &#8212; you found us. The rest of the site is pretty great though.</p>
+      <div class="hero-actions">
+        <a href="/" class="btn btn-primary">Go Home</a>
+        <a href="/nominate/" class="btn btn-outline">Nominate Someone</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "kindnessmob",
+  "version": "1.0.0",
+  "description": "The Kindness Mob website",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
