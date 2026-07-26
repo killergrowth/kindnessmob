@@ -30,10 +30,12 @@ ul { list-style: none; }
 
 /* === LOGO IMAGE === */
 .logo-img {
-  height: 40px;
+  height: 38px;
   width: auto;
   display: block;
-  max-width: 220px;
+  max-width: 240px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* === NAV === */
@@ -66,6 +68,11 @@ ul { list-style: none; }
   white-space: nowrap;
 }
 
+.logo-link {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
 .logo-link:hover .logo-img { opacity: 0.85; }
 
 .nav-links {

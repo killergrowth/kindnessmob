@@ -73,8 +73,8 @@ copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
 // Copy CF Pages functions
 copyDir(path.join(ROOT, 'functions'), path.join(DIST, 'functions'));
 
-// Copy static root files
-const staticRootFiles = ['robots.txt', '_worker.js', '_routes.json', '404.html'];
+// Copy static root files (NO _worker.js — CF Pages Functions must handle routing)
+const staticRootFiles = ['robots.txt', '404.html'];
 for (const f of staticRootFiles) {
   const src = path.join(ROOT, f);
   if (fs.existsSync(src)) {
