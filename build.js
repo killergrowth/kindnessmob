@@ -67,6 +67,12 @@ ensureDir(DIST);
 // Copy assets (images, css, etc.)
 copyDir(path.join(ROOT, 'images'), path.join(DIST, 'images'));
 
+// Copy assets folder (logos, favicons, photos)
+copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
+
+// Copy CF Pages functions
+copyDir(path.join(ROOT, 'functions'), path.join(DIST, 'functions'));
+
 // Copy static root files
 const staticRootFiles = ['robots.txt', '_worker.js', '_routes.json', '404.html'];
 for (const f of staticRootFiles) {

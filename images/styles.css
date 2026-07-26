@@ -30,9 +30,10 @@ ul { list-style: none; }
 
 /* === LOGO IMAGE === */
 .logo-img {
-  height: 36px;
+  height: 40px;
   width: auto;
   display: block;
+  max-width: 220px;
 }
 
 /* === NAV === */
