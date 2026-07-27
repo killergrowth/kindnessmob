@@ -94,6 +94,7 @@ const PAGES = [
   ['nominate/index.html',           'nominate/index.html'],
   ['volunteer/index.html',          'volunteer/index.html'],
   ['contact/index.html',            'contact/index.html'],
+  ['join/index.html',               'join/index.html'],
   ['privacy-policy/index.html',     'privacy-policy/index.html'],
 ];
 

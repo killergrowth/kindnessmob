@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join the Mob | The Kindness Mob</title>
+  <meta name="description" content="Become an official Kindness Mob member. Get notified of daily mobs, stay connected with the community, and help us spread kindness every single day.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://kindnessmob.pages.dev/join/">
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/images/styles.css">
+  <meta property="og:title" content="Join the Mob | The Kindness Mob">
+  <meta property="og:description" content="Become an official Kindness Mob member and help us spread kindness every single day.">
+  <meta property="og:image" content="https://kindnessmob.pages.dev/images/og-image.jpg">
+  <meta property="og:url" content="https://kindnessmob.pages.dev/join/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Kindness Mob">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <style>
+    .join-hero {
+      background: var(--black);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .join-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(200,40,26,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .join-card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 56px 48px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+    }
+    .join-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .join-card h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .join-card .subtitle {
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 36px;
+    }
+    .join-form-group {
+      text-align: left;
+      margin-bottom: 16px;
+    }
+    .join-form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .join-form-group input {
+      width: 100%;
+      padding: 13px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: var(--white);
+      font-size: 1rem;
+      font-family: var(--font);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .join-form-group input::placeholder { color: rgba(255,255,255,0.25); }
+    .join-form-group input:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(200,40,26,0.2);
+    }
+    .join-name-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .join-perks {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+    .join-perk {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+    .join-perk-icon {
+      color: var(--red);
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .join-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      font-family: var(--font);
+    }
+    .join-submit:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,40,26,0.35); }
+    .join-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .join-fine-print {
+      margin-top: 16px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.6;
+    }
+    .join-success {
+      display: none;
+      text-align: center;
+      padding: 40px 0;
+    }
+    .join-success .big-heart { font-size: 4rem; display: block; margin-bottom: 16px; }
+    .join-success h2 { font-size: 1.8rem; font-weight: 800; color: var(--white); margin-bottom: 12px; }
+    .join-success p { color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 24px; }
+    .join-error {
+      display: none;
+      background: rgba(252,129,129,0.1);
+      border: 1px solid rgba(252,129,129,0.3);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.875rem;
+      color: #fc8181;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+    @media (max-width: 520px) {
+      .join-card { padding: 40px 24px; }
+      .join-name-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+
+<main>
+  <section class="join-hero">
+    <div class="join-card">
+
+      <div id="join-success" class="join-success">
+        <span class="big-heart">❤️</span>
+        <h2>Welcome to the Mob!</h2>
+        <p>You&#8217;re officially a Mobster. We&#8217;ll keep you in the loop on daily mobs, news, and ways to get involved.</p>
+        <a href="/about/" class="btn btn-primary" style="display:inline-block;">Read Our Story</a>
+      </div>
+
+      <div id="join-form-wrap">
+        <span class="join-icon">❤️</span>
+        <h1>Become a Mobster</h1>
+        <p class="subtitle">Join the official Kindness Mob roster. We&#8217;ll keep you updated on daily mobs and ways to get involved. No spam, ever.</p>
+
+        <div class="join-perks">
+          <div class="join-perk"><span class="join-perk-icon">✓</span><span>Stay in the loop on who we&#8217;re mobbing each day</span></div>
+          <div class="join-perk"><span class="join-perk-icon">✓</span><span>Be part of a growing community of kindness-first people</span></div>
+          <div class="join-perk"><span class="join-perk-icon">✓</span><span>Get updates when we launch new features and events</span></div>
+        </div>
+
+        <div id="join-error" class="join-error"></div>
+
+        <form id="join-form" action="/join" method="POST">
+          <input type="hidden" name="source" value="join-page">
+          <div class="join-name-row">
+            <div class="join-form-group">
+              <label for="first-name">First Name *</label>
+              <input type="text" id="first-name" name="first_name" placeholder="Jane" autocomplete="given-name" required>
+            </div>
+            <div class="join-form-group">
+              <label for="last-name">Last Name *</label>
+              <input type="text" id="last-name" name="last_name" placeholder="Smith" autocomplete="family-name" required>
+            </div>
+          </div>
+          <div class="join-form-group">
+            <label for="join-email">Email *</label>
+            <input type="email" id="join-email" name="email" placeholder="jane@example.com" autocomplete="email" required>
+          </div>
+
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAAD-jJTQX810SrWlQ" data-theme="dark" style="margin-bottom:20px;"></div>
+
+          <button type="submit" class="join-submit" id="join-submit">Join the Mob ❤️</button>
+          <p class="join-fine-print">By joining, you agree to receive occasional emails from The Kindness Mob. Unsubscribe anytime.</p>
+        </form>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links  = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+  }
+
+  const form       = document.getElementById('join-form');
+  const submitBtn  = document.getElementById('join-submit');
+  const successBox = document.getElementById('join-success');
+  const formWrap   = document.getElementById('join-form-wrap');
+  const errorBox   = document.getElementById('join-error');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Joining\u2026';
+      errorBox.style.display = 'none';
+
+      try {
+        const fd = new FormData(form);
+        const resp = await fetch('/join', { method: 'POST', body: fd });
+        const data = await resp.json();
+
+        if (data.ok) {
+          formWrap.style.display = 'none';
+          successBox.style.display = 'block';
+        } else {
+          throw new Error(data.error || 'Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        errorBox.textContent = err.message;
+        errorBox.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Join the Mob \u2764\uFE0F';
+        if (window.turnstile) window.turnstile.reset();
+      }
+    });
+  }
+</script>
+</body>
+</html>

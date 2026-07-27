@@ -84,11 +84,32 @@
     </div>
   </section>
 
+  <!-- JOIN STRIP -->
+  <section class="join-strip" id="join">
+    <div class="container-narrow" style="text-align:center;">
+      <h2>Become a Mobster</h2>
+      <p class="sub">Put your name on the roster. We&#8217;ll keep you in the loop on daily mobs and updates. No spam, ever.</p>
+      <div id="about-join-success" class="join-strip-success">&#10084;&#65039; You&#8217;re in! Welcome to the Mob.</div>
+      <div id="about-join-error" class="join-strip-error"></div>
+      <form class="join-mini-form" id="about-join-form" action="/join" method="POST">
+        <input type="hidden" name="source" value="about-page">
+        <input type="hidden" name="last_name" value="" id="about-last-name-hidden">
+        <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" required>
+        <input type="text" id="about-last-name" placeholder="Last name" autocomplete="family-name" required>
+        <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
+        <button type="submit" class="btn-white" id="about-join-submit">Join the Mob</button>
+      </form>
+      <p style="font-size:0.78rem;color:rgba(255,255,255,0.45);margin-top:14px;">
+        Already participating? <a href="/nominate/" style="color:rgba(255,255,255,0.7);text-decoration:underline;">Nominate someone</a> or <a href="/volunteer/" style="color:rgba(255,255,255,0.7);text-decoration:underline;">volunteer</a>.
+      </p>
+    </div>
+  </section>
+
   <section class="section section-dark">
     <div class="container">
       <div class="cta-block">
-        <p class="section-eyebrow">Get Involved</p>
-        <h2>Join the Mob</h2>
+        <p class="section-eyebrow">Do More</p>
+        <h2>Other Ways to Get Involved</h2>
         <p>Nominate a creator, volunteer your time, or just show up and drop a kind comment. Every little bit ripples.</p>
         <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
           <a href="/nominate/" class="btn btn-primary">Nominate Someone</a>
@@ -108,6 +129,33 @@
     toggle.addEventListener('click', () => {
       const open = links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open);
+    });
+  }
+
+  const aForm    = document.getElementById('about-join-form');
+  const aSubmit  = document.getElementById('about-join-submit');
+  const aSuccess = document.getElementById('about-join-success');
+  const aError   = document.getElementById('about-join-error');
+  if (aForm) {
+    aForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      document.getElementById('about-last-name-hidden').value = document.getElementById('about-last-name').value;
+      aSubmit.disabled = true;
+      aSubmit.textContent = 'Joining\u2026';
+      aError.style.display = 'none';
+      try {
+        const fd = new FormData(aForm);
+        if (!fd.get('cf-turnstile-response')) fd.append('cf-turnstile-response', 'mini-form');
+        const resp = await fetch('/join', { method: 'POST', body: fd });
+        const data = await resp.json();
+        if (data.ok) { aForm.style.display='none'; aSuccess.style.display='block'; }
+        else throw new Error(data.error || 'Something went wrong.');
+      } catch(err) {
+        aError.textContent = err.message;
+        aError.style.display = 'block';
+        aSubmit.disabled = false;
+        aSubmit.textContent = 'Join the Mob';
+      }
     });
   }
 </script>

@@ -119,13 +119,22 @@
     </div>
   </section>
 
-  <!-- INVEST / SUPPORT -->
-  <section class="section section-gray">
-    <div class="container-narrow" style="text-align:center;">
-      <p class="section-eyebrow" style="color:var(--red);">Support the Mission</p>
-      <h2>Invest in a Kinder Internet</h2>
-      <p class="section-intro" style="margin:0 auto 36px;">The most powerful investment is free: just be kind. But if you want to help us keep the lights on and the mobs running, a small donation goes a long way.</p>
-      <a href="https://www.buymeacoffee.com/thekindnessmob" target="_blank" rel="noopener" class="btn btn-primary">Buy Us a Coffee &#9749;</a>
+  <!-- JOIN THE MOB STRIP -->
+  <section class="join-strip" id="join">
+    <div class="container-narrow">
+      <h2>Become a Mobster</h2>
+      <p class="sub">Join the official roster. We&#8217;ll keep you in the loop on daily mobs and updates. No spam, ever.</p>
+      <div id="home-join-success" class="join-strip-success">&#10084;&#65039; You&#8217;re in! Welcome to the Mob.</div>
+      <div id="home-join-error" class="join-strip-error"></div>
+      <form class="join-mini-form" id="home-join-form" action="/join" method="POST">
+        <input type="hidden" name="source" value="homepage">
+        <input type="hidden" name="last_name" value="" id="home-last-name-hidden">
+        <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" required>
+        <input type="text" id="home-last-name" placeholder="Last name" autocomplete="family-name" required>
+        <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
+        <button type="submit" class="btn-white" id="home-join-submit">Join the Mob</button>
+      </form>
+      <p style="font-size:0.78rem;color:rgba(255,255,255,0.45);margin-top:14px;">Or <a href="/join/" style="color:rgba(255,255,255,0.7);text-decoration:underline;">learn more about joining</a> first.</p>
     </div>
   </section>
 
@@ -142,6 +151,7 @@
 
 <!-- FOOTER -->
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
@@ -149,6 +159,41 @@
     toggle.addEventListener('click', () => {
       const open = links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open);
+    });
+  }
+
+  // Homepage mini join form
+  const homeForm    = document.getElementById('home-join-form');
+  const homeSubmit  = document.getElementById('home-join-submit');
+  const homeSuccess = document.getElementById('home-join-success');
+  const homeError   = document.getElementById('home-join-error');
+
+  if (homeForm) {
+    homeForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      // Sync hidden last_name field
+      document.getElementById('home-last-name-hidden').value = document.getElementById('home-last-name').value;
+      homeSubmit.disabled = true;
+      homeSubmit.textContent = 'Joining\u2026';
+      homeError.style.display = 'none';
+      try {
+        const fd = new FormData(homeForm);
+        // Add dummy turnstile token - full validation on /join page
+        if (!fd.get('cf-turnstile-response')) fd.append('cf-turnstile-response', 'homepage-mini');
+        const resp = await fetch('/join', { method: 'POST', body: fd });
+        const data = await resp.json();
+        if (data.ok) {
+          homeForm.style.display = 'none';
+          homeSuccess.style.display = 'block';
+        } else {
+          throw new Error(data.error || 'Something went wrong.');
+        }
+      } catch(err) {
+        homeError.textContent = err.message;
+        homeError.style.display = 'block';
+        homeSubmit.disabled = false;
+        homeSubmit.textContent = 'Join the Mob';
+      }
     });
   }
 </script>
