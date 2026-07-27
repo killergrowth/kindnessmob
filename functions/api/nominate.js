@@ -83,7 +83,7 @@ export async function onRequestPost({ request, env }) {
       if (!screenshotFile.type.startsWith('image/')) {
         return jsonError('Screenshot must be an image file.');
       }
-      screenshotKey = `nominations/${Date.now()}-${nomineeHandle.replace(/[^a-z0-9]/gi, '_')}.${screenshotFile.type.split('/')[1]}`;
+      screenshotKey = `nominations/${Date.now()}-${nomineeHandle.replace(/[^a-z0-9]/gi, '_')}.${screenshotFile.type.split('/')[1] || 'jpg'}`;
       if (env.SCREENSHOTS) {
         await env.SCREENSHOTS.put(screenshotKey, screenshotFile.stream(), {
           httpMetadata: { contentType: screenshotFile.type }

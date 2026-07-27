@@ -9,7 +9,9 @@ database_id = "2a1f0e39-08ae-40f9-bec5-a66a0b74ce55"
 
 [[r2_buckets]]
 binding = "SCREENSHOTS"
-bucket_name = "km-screenshots-prod"
+bucket_name = "kindness-mob"
+# Screenshots stored under nominations/ prefix (e.g. nominations/timestamp-handle.jpg)
+# Single bucket for both staging and prod — screenshots are user content, not env-specific
 
 [env.preview]
 [[env.preview.d1_databases]]
@@ -19,4 +21,4 @@ database_id = "79b90a89-c00b-449f-adab-d4c834c50e09"
 
 [[env.preview.r2_buckets]]
 binding = "SCREENSHOTS"
-bucket_name = "km-screenshots-staging"
+bucket_name = "kindness-mob"
