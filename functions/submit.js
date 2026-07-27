@@ -182,7 +182,7 @@ export async function onRequestPost({ request, env }) {
     // Build email content based on form type
     let subject, htmlBody;
     if (formType === 'nomination') {
-      subject = 'New Nomination — The Kindness Mob';
+      subject = 'New Nomination - The Kindness Mob';
       htmlBody = buildNominationEmail({
         name:     form.get('your_name')  || '',
         email:    form.get('your_email') || '',
@@ -192,7 +192,7 @@ export async function onRequestPost({ request, env }) {
         postLink: form.get('post_link')  || '',
       });
     } else {
-      subject = `New Contact Message — The Kindness Mob`;
+      subject = 'New Contact Message - The Kindness Mob';
       htmlBody = buildContactEmail({
         name:    form.get('name')    || '',
         email:   form.get('email')   || '',
