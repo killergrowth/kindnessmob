@@ -95,6 +95,7 @@ const PAGES = [
   ['volunteer/index.html',          'volunteer/index.html'],
   ['contact/index.html',            'contact/index.html'],
   ['join/index.html',               'join/index.html'],
+  ['shop/index.html',               'shop/index.html'],
   ['privacy-policy/index.html',     'privacy-policy/index.html'],
 ];
 
