@@ -570,6 +570,115 @@ h2 {
 .join-strip-success { display:none; color:var(--white); font-size:1.1rem; font-weight:600; margin-top:8px; }
 .join-strip-error { display:none; color:rgba(255,255,255,0.85); font-size:0.85rem; margin-top:8px; }
 
+/* === IN THE NEWS SECTION === */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.news-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 24px;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+.news-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  transform: translateY(-3px);
+  border-color: rgba(200,40,26,0.25);
+}
+.news-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(200,40,26,0.08);
+  color: var(--red);
+  border-radius: 100px;
+  padding: 3px 10px 3px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+.news-badge svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.news-outlet {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--mid-gray);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.news-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+.news-desc {
+  font-size: 0.875rem;
+  color: rgba(34,34,34,0.6);
+  line-height: 1.6;
+  flex: 1;
+}
+.news-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+.news-date {
+  font-size: 0.78rem;
+  color: var(--mid-gray);
+}
+.news-read-more {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.02em;
+}
+.news-card-secondary-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.section-dark .news-card {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.1);
+  color: var(--white);
+}
+.section-dark .news-card:hover { border-color: rgba(200,40,26,0.5); }
+.section-dark .news-title { color: var(--white); }
+.section-dark .news-desc { color: rgba(255,255,255,0.55); }
+.section-dark .news-date { color: rgba(255,255,255,0.4); }
+.section-dark .news-badge { background: rgba(200,40,26,0.15); }
+.section-dark .news-footer { border-color: rgba(255,255,255,0.08); }
+
 /* === MOBILE === */
 @media (max-width: 768px) {
   .nav-links {
