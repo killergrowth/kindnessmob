@@ -222,12 +222,12 @@ ul { list-style: none; }
 }
 
 .stats-inner {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  gap: 80px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  align-items: center;
 }
 
 .stat-item { text-align: center; }
@@ -707,7 +707,8 @@ h2 {
   .about-split { grid-template-columns: 1fr; gap: 40px; }
   .about-img { order: -1; }
   .form-row { grid-template-columns: 1fr; }
-  .stats-inner { gap: 40px; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
+  .stat-num { font-size: clamp(1.8rem, 6vw, 2.4rem); }
   .form-card { padding: 32px 24px; }
 
   .nominate-grid { grid-template-columns: 1fr !important; }

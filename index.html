@@ -49,16 +49,20 @@
   <section class="stats-strip">
     <div class="stats-inner">
       <div class="stat-item">
-        <div class="stat-num">900+</div>
+        <div class="stat-num" data-count="325" data-suffix="">0</div>
         <div class="stat-label">Successful Mobs</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">Daily</div>
-        <div class="stat-label">Mobs Happen</div>
+        <div class="stat-num" data-count="389882" data-suffix="">0</div>
+        <div class="stat-label">Total Comments</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">100s</div>
-        <div class="stat-label">Comments per Mob</div>
+        <div class="stat-num" data-count="1200" data-suffix="">0</div>
+        <div class="stat-label">Avg Comments / Mob</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" data-count="417900" data-suffix="k" data-divisor="1000" data-decimals="1">0</div>
+        <div class="stat-label">Mobsters</div>
       </div>
     </div>
   </section>
@@ -251,6 +255,48 @@
       const open = links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open);
     });
+  }
+
+  // === STAT COUNTER ANIMATION ===
+  function easeOutExpo(t) {
+    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+  }
+
+  function animateStat(el) {
+    const target   = parseFloat(el.dataset.count);
+    const suffix   = el.dataset.suffix  || '';
+    const divisor  = parseFloat(el.dataset.divisor) || 1;
+    const decimals = parseInt(el.dataset.decimals, 10) || 0;
+    const duration = 1800;
+    const start    = performance.now();
+
+    function tick(now) {
+      const elapsed  = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased    = easeOutExpo(progress);
+      const value    = (target / divisor) * eased;
+      el.textContent = value.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      }) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  // Trigger when stats strip enters the viewport
+  const statsEls = document.querySelectorAll('.stat-num[data-count]');
+  if (statsEls.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          statsEls.forEach(animateStat);
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(document.querySelector('.stats-strip'));
   }
 
   // Homepage mini join form
