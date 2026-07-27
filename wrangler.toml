@@ -2,13 +2,13 @@ name = "kindnessmob"
 compatibility_date = "2024-09-23"
 pages_build_output_dir = "./dist"
 
-# Production bindings (main branch)
-# D1 and R2 bindings are set in CF Pages dashboard per environment.
-# This file documents the binding names used in Function code.
-#
-# Binding name: DB          -> D1 database
-# Binding name: SCREENSHOTS -> R2 bucket
-#
-# Production: DB=km-db-prod, SCREENSHOTS=km-screenshots-prod
-# Preview/staging: DB=km-db-staging, SCREENSHOTS=km-screenshots-staging
-# (Set via CF Pages dashboard > Settings > Bindings per environment)
+[[d1_databases]]
+binding = "DB"
+database_name = "km-db-prod"
+database_id = "2a1f0e39-08ae-40f9-bec5-a66a0b74ce55"
+
+[env.preview]
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "km-db-staging"
+database_id = "79b90a89-c00b-449f-adab-d4c834c50e09"
