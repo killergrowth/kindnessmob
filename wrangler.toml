@@ -7,8 +7,16 @@ binding = "DB"
 database_name = "km-db-prod"
 database_id = "2a1f0e39-08ae-40f9-bec5-a66a0b74ce55"
 
+[[r2_buckets]]
+binding = "SCREENSHOTS"
+bucket_name = "km-screenshots-prod"
+
 [env.preview]
 [[env.preview.d1_databases]]
 binding = "DB"
 database_name = "km-db-staging"
 database_id = "79b90a89-c00b-449f-adab-d4c834c50e09"
+
+[[env.preview.r2_buckets]]
+binding = "SCREENSHOTS"
+bucket_name = "km-screenshots-staging"
