@@ -124,25 +124,6 @@
     </div>
   </section>
 
-  <!-- JOIN THE MOB STRIP -->
-  <section class="join-strip" id="join">
-    <div class="container-narrow">
-      <h2>Become a Mobster</h2>
-      <p class="sub">Join the official roster. We&#8217;ll keep you in the loop on daily mobs and updates. No spam, ever.</p>
-      <div id="home-join-success" class="join-strip-success">&#10084;&#65039; You&#8217;re in! Welcome to the Mob.</div>
-      <div id="home-join-error" class="join-strip-error"></div>
-      <form class="join-mini-form" id="home-join-form" action="/join" method="POST">
-        <input type="hidden" name="source" value="homepage">
-        <input type="hidden" name="last_name" value="" id="home-last-name-hidden">
-        <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" required>
-        <input type="text" id="home-last-name" placeholder="Last name" autocomplete="family-name" required>
-        <input type="email" name="email" placeholder="Email address" autocomplete="email" required>
-        <button type="submit" class="btn-white" id="home-join-submit">Join the Mob</button>
-      </form>
-      <p style="font-size:0.78rem;color:rgba(255,255,255,0.45);margin-top:14px;">Or <a href="/join/" style="color:rgba(255,255,255,0.7);text-decoration:underline;">learn more about joining</a> first.</p>
-    </div>
-  </section>
-
   <!-- IN THE NEWS -->
   <section class="section">
     <div class="container" style="text-align:center;">
@@ -234,12 +215,12 @@
   </section>
 
   <!-- JOIN DISCORD -->
-  <section class="section">
+  <section class="join-strip">
     <div class="container-narrow" style="text-align:center;">
-      <p class="section-eyebrow">Community</p>
-      <h2>Join Our Discord</h2>
-      <p class="section-intro" style="margin:0 auto 36px;">Connect with fellow kindness spreaders, stay updated on daily mobs, and be part of the conversation. Our Discord is where the magic gets organized.</p>
-      <a href="https://discord.gg/aNF6X82Gfr" target="_blank" rel="noopener" class="btn btn-primary">Join the Discord</a>
+      <p class="section-eyebrow" style="color:rgba(255,255,255,0.6);">Community</p>
+      <h2 style="color:var(--white);">Join Our Discord</h2>
+      <p class="section-intro" style="margin:0 auto 36px;color:rgba(255,255,255,0.75);">Connect with fellow kindness spreaders, stay updated on daily mobs, and be part of the conversation. Our Discord is where the magic gets organized.</p>
+      <a href="https://discord.gg/aNF6X82Gfr" target="_blank" rel="noopener" class="btn-white" style="display:inline-block;padding:14px 32px;border-radius:100px;font-weight:700;font-size:1rem;background:var(--white);color:var(--red);text-decoration:none;">Join the Discord</a>
     </div>
   </section>
 </main>
@@ -299,40 +280,7 @@
     observer.observe(document.querySelector('.stats-strip'));
   }
 
-  // Homepage mini join form
-  const homeForm    = document.getElementById('home-join-form');
-  const homeSubmit  = document.getElementById('home-join-submit');
-  const homeSuccess = document.getElementById('home-join-success');
-  const homeError   = document.getElementById('home-join-error');
 
-  if (homeForm) {
-    homeForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      // Sync hidden last_name field
-      document.getElementById('home-last-name-hidden').value = document.getElementById('home-last-name').value;
-      homeSubmit.disabled = true;
-      homeSubmit.textContent = 'Joining\u2026';
-      homeError.style.display = 'none';
-      try {
-        const fd = new FormData(homeForm);
-        // Add dummy turnstile token - full validation on /join page
-        if (!fd.get('cf-turnstile-response')) fd.append('cf-turnstile-response', 'homepage-mini');
-        const resp = await fetch('/join', { method: 'POST', body: fd });
-        const data = await resp.json();
-        if (data.ok) {
-          homeForm.style.display = 'none';
-          homeSuccess.style.display = 'block';
-        } else {
-          throw new Error(data.error || 'Something went wrong.');
-        }
-      } catch(err) {
-        homeError.textContent = err.message;
-        homeError.style.display = 'block';
-        homeSubmit.disabled = false;
-        homeSubmit.textContent = 'Join the Mob';
-      }
-    });
-  }
 </script>
 </body>
 </html>
