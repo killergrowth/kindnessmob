@@ -2,3 +2,13 @@ dist/
 node_modules/
 .wrangler/
 .env
+_migration/
+backups/
+set-env.js
+set-secrets.js
+get-ts.js
+get-turnstile.js
+check-env.js
+check-sb.js
+email-sop.js
+email-sop.mjs
