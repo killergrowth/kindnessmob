@@ -253,6 +253,28 @@
     });
   }
 
+  // === LIVE STATS FROM thekindnessmob.org/api/stats ===
+  (async function loadLiveStats() {
+    try {
+      const res = await fetch('https://thekindnessmob.org/api/stats');
+      if (!res.ok) return;
+      const data = await res.json();
+      const s = data.stats || {};
+      const map = {
+        'Successful Mobs':    s.successfulMobs,
+        'Total Comments':     s.totalComments,
+        'Avg Comments / Mob': s.avgComments,
+      };
+      document.querySelectorAll('.stat-item').forEach(item => {
+        const label = item.querySelector('.stat-label');
+        const num   = item.querySelector('.stat-num');
+        if (!label || !num) return;
+        const val = map[label.textContent.trim()];
+        if (val != null) num.dataset.count = val;
+      });
+    } catch (e) { /* silently fall back to hardcoded values */ }
+  })();
+
   // === STAT COUNTER ANIMATION ===
   function easeOutExpo(t) {
     return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
